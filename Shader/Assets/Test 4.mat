@@ -62,8 +62,11 @@ Material:
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
+    - _Da: 1.2
+    - _Damaged: 0.9
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _Float1: 1.2
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -79,5 +82,5 @@ Material:
     - __dirty: 0
     m_Colors:
     - _Color: {r: 0, g: 0, b: 0, a: 1}
-    - _Edge: {r: 1, g: 0.0235849, b: 0.0235849, a: 0}
+    - _Edge: {r: 1, g: 0.040827945, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
