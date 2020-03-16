@@ -10,7 +10,7 @@ public class EnemyAI : MonoBehaviour
     public Transform target;
     public float curHealth, maxHealth, moveSpeed, attackRange, attackSpeed, noiseRange, sense;
     public NavMeshAgent agent;
-    
+    public Shader skin;
     //gives distances for how far away the player will be when they switch behaviour
     public float dist, sightDist;
     public bool Detected;
@@ -19,13 +19,9 @@ public class EnemyAI : MonoBehaviour
     public float turnSpeed;
     public float sightAngle;
     public Movement movement;
-    public Transform waypointParent;
-    private Transform[] points;
-    public float waypointDistance;
-    public int currentWayPoint = 1;
+   
     public Rigidbody rigid;
-    public LayerMask targetMask;
-    public LayerMask obstacleMask;
+    
     public float AttackTimer;
     RaycastHit hit;
     public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
@@ -41,24 +37,27 @@ public class EnemyAI : MonoBehaviour
         //sets the conditions at the start
         target = GameObject.FindGameObjectWithTag("Player").transform;
         agent = self.GetComponent<NavMeshAgent>();
-        points = waypointParent.GetComponentsInChildren<Transform>();
+        curHealth = 100f;
+        maxHealth = curHealth;
         sightDist = 100f;
         sightAngle = 90f;
-
+        moveSpeed = 10f;
+        //skin = self.GetComponent<Material>();
+        //skin.SetFloat("Damaged", curHealth / maxHealth);
         AttackTimer = attackSpeed;
     }
     public void TakeDamage(float damage)
     {
         curHealth -= damage;
+        //skin.SetFloat("Damaged", curHealth / maxHealth);
     }
     void Update()
     {
         
-
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, targetMask))
-        {
-            agent.destination = target.position;
-        }
+        
+       
+            
+        
 
         noiseRange = movement.noise * sense;
         //kills the enemy when they lose all their health
@@ -69,59 +68,10 @@ public class EnemyAI : MonoBehaviour
         //moves the enemy when the player is alive
         if (PlayerHandler.isDead == false)
         {
-            dist = Vector3.Distance(target.position, transform.position);
-
-            if (curHealth == 0)
-            {
-                return;
-            }
-            //attacks the player if they get too close
-            else if ( AttackTimer >= 0)
-            {
-                AttackTimer -= Time.deltaTime;
-                Debug.Log("Attack");
-                dist = 0;
-
-            }
-            else if ( AttackTimer > 0)
-            {
-                Debug.Log("Attack");
-                AttackTimer = attackSpeed;
-                dist = 0;
-            }
-
-            //follows the player when they see him
-            else if (dist <= noiseRange)
-            {
-                agent.destination = target.position;
-                Detected = true;
-            }
+            agent.destination = target.position;
 
 
-            else
-            {
-                Detected = false;
-                if (points.Length == 0)
-                    return;
 
-                // Set the agent to go to the currently selected destination.
-                agent.destination = points[currentWayPoint].position;
-                //transform.position = Vector3.MoveTowards(transform.position, points[currentWayPoint].position, 1f);
-                if (transform.position.x == agent.destination.x && transform.position.z == agent.destination.z)
-                {
-                    if (currentWayPoint < points.Length - 1)
-                    {
-                        currentWayPoint++;
-                    }
-                    else
-                    {
-                        //resets the waypoints to the begining
-                        currentWayPoint = 0;
-                    }
-
-                }
-
-            }
         }
 
     }

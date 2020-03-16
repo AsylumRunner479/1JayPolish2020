@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    public float damage, range, attackSpeed;
+    public float damage, range, attackSpeed, attackRate;
     public Camera cam;
     public LayerMask enemy;
+    public ParticleSystem bullets;
     // Update is called once per frame
     void Update()
     {
         attackSpeed += Time.deltaTime;
-        if (Input.GetMouseButtonDown(0) && attackSpeed > 0)
+        if (Input.GetMouseButton(0) && attackSpeed > 0)
         {
-            attackSpeed = -0.4f;
+            attackSpeed = -1f/attackRate;
             Shoot();
+            bullets.Emit(1);
         }
     }
     void Shoot()
@@ -26,6 +28,7 @@ public class Shooting : MonoBehaviour
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
+                
             }
         }
     }

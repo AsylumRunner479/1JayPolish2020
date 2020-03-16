@@ -7,7 +7,7 @@ Shader "Dissolve"
 		_Cutoff( "Mask Clip Value", Float ) = 0.5
 		_Edge("Edge", Color) = (1,0.0235849,0.0235849,0)
 		_Color("Color", Color) = (0,0,0,1)
-		_Damaged("Damaged", Float) = 1.2
+		_Damaged("Damaged", Float) = 0.9
 		[HideInInspector] _texcoord( "", 2D ) = "white" {}
 		[HideInInspector] __dirty( "", Int ) = 1
 	}
@@ -83,13 +83,13 @@ Shader "Dissolve"
 }
 /*ASEBEGIN
 Version=17800
-395;146;1055;784;1280.813;184.7121;1.3;True;False
+1310;110;1055;784;1214.21;181.3887;1.3;True;False
 Node;AmplifyShaderEditor.IntNode;17;-688.847,786.3622;Inherit;False;Constant;_Int0;Int 0;2;0;Create;True;0;0;False;0;0;0;0;1;INT;0
 Node;AmplifyShaderEditor.Vector2Node;25;-1013.17,6.914093;Inherit;False;Constant;_Vector0;Vector 0;2;0;Create;True;0;0;False;0;1,1;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
 Node;AmplifyShaderEditor.RangedFloatNode;27;-666.2383,498.9374;Inherit;False;Constant;_Float0;Float 0;3;0;Create;True;0;0;False;0;0;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.TFHCRemapNode;16;-443.1633,528.9738;Inherit;True;5;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;3;FLOAT;0;False;4;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.TextureCoordinatesNode;26;-826.1704,79.91409;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.RangedFloatNode;19;-488.7437,412.415;Inherit;False;Property;_Damaged;Damaged;3;0;Create;True;0;0;False;0;1.2;0.1;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;19;-488.7437,412.415;Inherit;False;Property;_Damaged;Damaged;3;0;Create;True;0;0;False;0;0.9;0.1;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;18;-300.244,312.315;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.NoiseGeneratorNode;4;-565.1336,-15.48549;Inherit;True;Simplex2D;True;False;2;0;FLOAT2;50,50;False;1;FLOAT;100;False;1;FLOAT;0
 Node;AmplifyShaderEditor.StepOpNode;20;-221.8224,-155.9288;Inherit;True;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
@@ -112,4 +112,4 @@ WireConnection;9;0;14;0
 WireConnection;9;2;21;0
 WireConnection;9;10;21;0
 ASEEND*/
-//CHKSM=504A528BC63545DDA199FF79F690A686E3A8E5D7
+//CHKSM=19D352C4E29444D3449A891A1956D74F10AF2E47
