@@ -14,9 +14,19 @@ public class Shooting : MonoBehaviour
         attackSpeed += Time.deltaTime;
         if (Input.GetMouseButton(0) && attackSpeed > 0)
         {
-            attackSpeed = -1f/attackRate;
+            attackSpeed = -3f/attackRate;
             Shoot();
             bullets.Emit(1);
+            
+        }
+    }
+    private void OnParticleCollision(GameObject other)
+    {
+        EnemyAI enemy = other.transform.GetComponent<EnemyAI>();
+        if (enemy != null)
+        {
+            enemy.TakeDamage(damage);
+
         }
     }
     void Shoot()

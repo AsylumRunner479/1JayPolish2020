@@ -20,7 +20,7 @@ public class EnemyAI : MonoBehaviour
     public float sightAngle;
     public Movement movement;
    
-    public Rigidbody rigid;
+    //public Rigidbody rigid;
     
     public float AttackTimer;
     RaycastHit hit;
@@ -42,8 +42,8 @@ public class EnemyAI : MonoBehaviour
         sightDist = 100f;
         sightAngle = 90f;
         moveSpeed = 10f;
-        //skin = self.GetComponent<Material>();
-        //skin.SetFloat("Damaged", curHealth / maxHealth);
+        skin = self.GetComponent<Shader>();
+        //skin.Set("Damaged", curHealth / maxHealth);
         AttackTimer = attackSpeed;
     }
     public void TakeDamage(float damage)
