@@ -8,6 +8,7 @@ public class Shooting : MonoBehaviour
     public Camera cam;
     public LayerMask enemy;
     public ParticleSystem bullets;
+    
     // Update is called once per frame
     void Update()
     {
@@ -23,10 +24,11 @@ public class Shooting : MonoBehaviour
     private void OnParticleCollision(GameObject other)
     {
         EnemyAI enemy = other.transform.GetComponent<EnemyAI>();
+        Material skin = other.transform.GetComponent<Material>();
         if (enemy != null)
         {
             enemy.TakeDamage(damage);
-
+            skin.SetFloat("Damaged", enemy.curHealth);
         }
     }
     void Shoot()
@@ -35,10 +37,11 @@ public class Shooting : MonoBehaviour
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
         {
             EnemyAI enemy = hit.transform.GetComponent<EnemyAI>();
+            Material skin = hit.transform.GetComponent<Material>();
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
-                
+                skin.SetFloat("Damaged", enemy.curHealth);
             }
         }
     }

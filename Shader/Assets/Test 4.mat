@@ -63,7 +63,7 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _Da: 1.2
-    - _Damaged: 1
+    - _Damaged: 0.4
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _Float1: 1.2
