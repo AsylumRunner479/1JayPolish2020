@@ -10,8 +10,8 @@ public class PlayerHandler : MonoBehaviour
     public float maxHealth;
 
     public float curHealth, healRate;
-
-    
+    public Gradient grad;
+    public Image fill;
 
     public Slider healthBar;
 
@@ -41,7 +41,7 @@ public class PlayerHandler : MonoBehaviour
     {
 
         healRate = 0;
-
+        fill.color = grad.Evaluate(1f);
 
     }
 
@@ -79,7 +79,7 @@ public class PlayerHandler : MonoBehaviour
     {
         curHealth = Mathf.Clamp(curHealth, 0, maxHealth);
         healthBar.value = Mathf.Clamp01(curHealth / maxHealth);
-
+        fill.color = grad.Evaluate(curHealth/maxHealth);
     }
 
 

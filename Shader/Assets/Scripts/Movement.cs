@@ -6,8 +6,8 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
-    Vector2 i_movement;
-    [SerializeField] private PlayerControls _control;
+    //Vector2 i_movement;
+    //[SerializeField] private PlayerControls _control;
     [Header("Speed Vars")]
     //value Variables
     public float moveSpeed, noise, maxNoise, echoNoise;
@@ -40,13 +40,13 @@ public class Movement : MonoBehaviour
     private void OnEnable()
     {
         //_control.Player1.Jump.performed += Jump();
-        _control.Player1.Jump.Enable();
+        //_control.Player1.Jump.Enable();
     }
     private void OnDisable()
     {
         //_control.Player1.Jump.performed -= Jump();
         
-        _control.Player1.Jump.Disable();
+       // _control.Player1.Jump.Disable();
     }
     private void Jump()
     {
@@ -89,7 +89,7 @@ public class Movement : MonoBehaviour
             {
                 
             }
-            _moveDir = transform.TransformDirection(new Vector3(i_movement.x, 0, i_movement.y) * moveSpeed);
+            _moveDir = transform.TransformDirection(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * moveSpeed);
             if (Input.GetButton("Jump"))
             {
                 Jump();
